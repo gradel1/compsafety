@@ -1,0 +1,28 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+void decode(string& s)
+{
+    rotate(s.begin(), s.begin() + (s.length() - 3), s.end());
+}
+
+int main()
+{
+    setlocale(LC_ALL, "rus");
+    string s;
+    ifstream f("f.txt");
+    ofstream g("g.txt");
+    while (f >> s)
+    {
+        if (s.length() > 3)
+        {
+            decode(s);
+            g << s << " ";
+        }
+    }
+    f.close();
+    g.close();
+    system("pause");
+}
